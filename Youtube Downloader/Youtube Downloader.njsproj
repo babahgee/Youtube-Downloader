@@ -1,0 +1,56 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>Youtube Downloader</Name>
+    <RootNamespace>Youtube Downloader</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>ff8fe68a-8814-4550-8691-4cec592f2809</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <StartWebBrowser>false</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="view\index.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="view\scripts\main.js" />
+    <Content Include="view\scripts\static\static.essentials.js" />
+    <Content Include="view\scripts\static\static.titlebar.js" />
+    <Content Include="view\styles\loader.css" />
+    <Content Include="view\styles\main.css" />
+    <Content Include="view\styles\static\static.documentloader.css" />
+    <Content Include="view\styles\static\static.essentials.css" />
+    <Content Include="view\styles\static\static.titlebar.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="view\" />
+    <Folder Include="output\" />
+    <Folder Include="view\data\" />
+    <Folder Include="view\scripts\" />
+    <Folder Include="view\scripts\static\" />
+    <Folder Include="view\styles\" />
+    <Folder Include="view\styles\static\" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+</Project>
