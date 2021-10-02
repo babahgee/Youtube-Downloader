@@ -1,0 +1,82 @@
+
+a, abbr, acronym, address, applet, b, big, blockquote, body, button, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, kbd, label, legend, li, nav, object, ol, p, pre, q, s, samp, section, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, title, tr, tt, u, ul, var {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: 0 0;
+}
+
+:root {
+    --primary-color: #fff;
+    --secondary-color: #80a7ff;
+    /** Input styles */
+    --input-error-background: #ff9595;
+    --input-error-border-color: #c94f4f;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #b7b7b7;
+    height: 10px;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #afafaf;
+    }
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: none;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.app-content {
+    width: 100vw;
+    height: calc(100vh - var(--titlebar-height));
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: block;
+    position: relative;
+    background: url(../../data/images/wallpaper_abstract_white.jpg);
+    background-size: auto auto;
+}
+
+.app-content-wrapper {
+    width: 80%;
+    height: auto;
+    padding: 30px 0px;
+    margin: 0 auto;
+    background: none;
+}
+
+.app-content-section {
+    width: 100%;
+    height: auto;
+    margin: 20px 0px;
+}

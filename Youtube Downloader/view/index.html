@@ -2,10 +2,170 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <!-- Default configurations -->
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Youtube Downloader">
+    <meta name="description" content="Download Youtube videos using this application.">
+    <meta name="author" content="©Youtube Downloader">
+    <meta name="theme-color" content="#fff">
+    <meta itemprop="name" content="Youtube Downloader">
+    <meta itemprop="description" content="Download Youtube videos using this application.">
+
+    <!-- Twitter meta configurations. -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Youtube Downloader">
+    <meta name="twitter:description" content="Download Youtube videos using this application.">
+    <meta name="twitter:site" content="@Youtube Downloader">
+    <meta name="twitter:creator" content="@Youtube Downloader">
+
+    <!-- OG meta configurations.  -->
+    <meta property="og:title" content="Youtube Downloader">
+    <meta property="og:description" content="Download Youtube videos using this application.">
+    <meta property="og:image:width" content="100">
+    <meta property="og:image:height" content="100">
+    <meta property="og:site_name" content="Youtube Downloader">
+    <meta property="og:locale" content="en_EN">
+
+    <!-- Static stylesheet -->
+    <link href="styles/static/static.essentials.css" type="text/css" rel="stylesheet" />
+    <link href="styles/static/static.titlebar.css" type="text/css" rel="stylesheet" />
+
+    <!-- Font loader -->
+    <link href="data/fonts/index.css" type="text/css" rel="stylesheet" />
+
+    <!-- Main stylesheet -->
+    <link href="styles/main.css" type="text/css" rel="stylesheet" />
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" integrity="sha512-apX8rFN/KxJW8rniQbkvzrshQ3KvyEH+4szT3Sno5svdr6E/CP0QE862yEeLBMUnCqLko8QaugGkzvWS7uNfFQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/svg-with-js.min.css" integrity="sha512-W3ZfgmZ5g1rCPFiCbOb+tn7g7sQWOQCB1AkDqrBG1Yp3iDjY9KYFh/k1AWxrt85LX5BRazEAuv+5DV2YZwghag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <meta charset="utf-8" />
-    <title></title>
+    <title>Youtube Downloader</title>
 </head>
 <body>
+    <div class="app electron-app main-application">
+        <div class="container">
+            
+            <div class="app-titlebar">
+                <div class="container">
+                    <!-- Titlebar contents -->
 
+                    <!-- First titlebar layer -->
+                    <div class="layer-1">
+                        
+                        <!-- Draggable container -->
+                        <div class="titlebar-draggable">
+                            <div class="titlebar-title">
+                                <span>Youtube Downloader</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Control buttons -->
+                         
+                        <div class="titlebar-controls">
+                            <div class="container">
+
+                                <div class="titlebar-controls-button button-close" ipc-send="app:close"></div>
+                                <div class="titlebar-controls-button button-toggleMaximise" ipc-send="app:toggleWindowSize"></div>
+                                <div class="titlebar-controls-button button-minimize" ipc-send="app:minimize"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second titlebar layer -->
+                    <div class="layer-2">
+
+                        <div class="titlebar-quickbuttons">
+
+                            <div class="titlebar-quickbuttons-button">
+                                <span>History</span>
+                            </div>
+                            <div class="titlebar-quickbuttons-button">
+                                <span>Open downloads</span>
+                            </div>
+                            <div class="titlebar-quickbuttons-button">
+                                <span>Settings</span>
+                            </div>
+                            <div class="titlebar-quickbuttons-button">
+                                <span>Github</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Main application content -->
+            <div class="app-content">
+
+                <!-- Content wrapper so everything stays in the center -->
+                <div class="app-content-wrapper">
+
+                    <!-- Big intro section -->
+                    <div class="app-content-section">
+
+                        <div class="startup-big-title">
+                            <span>Good evening.</span>
+                        </div>
+
+                        <div class="startup-desc">
+                            <span>What YouTube video would you like to convert today?</span>
+                        </div>
+
+                        <div class="content-seperator"></div>
+
+                    </div>
+
+                    <!-- Downloader queue -->
+                    <div class="app-content-section">
+
+                        <div class="downloader-queue">
+
+                            <div class="downloader-queue-items">
+                                <!--<div class="queue-item">
+                                    <div class="queue-item-url" contenteditable="true" placeholder="Enter YouTube URL." spellcheck="false"></div>
+                                    <div class="queue-item-arrow"></div>
+                                    <div class="queue-item-filename" contenteditable="true" placeholder="Enter file name" spellcheck="false"></div>
+                                </div>-->
+                            </div>
+
+                            <div class="queue-add-item button-add-item-to-queue">
+                                <div class="queue-add-item-button"></div>
+                                <div class="queue-add-item-title">
+                                    <span>Add queue item</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="downloader-output">
+
+                            <div class="downloader-output-interaction-wrapper">
+
+                                <div class="downloader-output-path" contenteditable="true" placeholder="Enter output path." spellcheck="false"></div>
+                                <div class="downloader-output-arrow"></div>
+                                <div class="downloader-output-button button-convert-videos">
+                                    <span>Convert queue</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="scripts/main.js" type="module"></script>
 </body>
 </html>

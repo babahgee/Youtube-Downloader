@@ -1,0 +1,168 @@
+:root {
+    --titlebar-background-primary: #fff;
+    --titlebar-background-secondary: #eaeaea;
+    --titlebar-height: 50px;
+}
+
+.app-titlebar {
+    width: 100vw;
+    height: var(--titlebar-height);
+    background: none;
+    position: relative;
+    display: block;
+    content: "";
+    user-select: none;
+    box-shadow: 0px 5px 10px var(--titlebar-background-secondary);
+}
+
+    .app-titlebar .layer-1 {
+        width: 100%;
+        height: 25px;
+        background: #d2d2d2;
+        width: 100%;
+        height: 25px;
+        background: #d2d2d2;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+
+    .app-titlebar .layer-2 {
+        width: 100%;
+        height: 25px;
+        background: #f3f3f3;
+    }
+
+.titlebar-draggable {
+    width: calc(100% - 140px);
+    height: 100%;
+    float: left;
+    -webkit-app-region: drag !important;
+}
+
+.titlebar-title {
+    width: auto;
+    height: auto;
+    float: left;
+    margin-top: 3px;
+    margin-left: 20px;
+}
+
+    .titlebar-title span {
+        font-family: Montserrat;
+        color: #000;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+
+.titlebar-quickbuttons {
+    width: calc(100% - 40px);
+    height: 100%;
+    margin: 0px 20px;
+    background: none;
+}
+
+.titlebar-quickbuttons-button {
+    width: auto;
+    height: auto;
+    float: left;
+    cursor: pointer;
+    border: 1px solid #e2e2e2;
+    padding: 2px 10px;
+    margin: 3px 10px 0px 0px;
+    border-radius: 10px;
+}
+
+    .titlebar-quickbuttons-button span {
+        font-family: RobotoLight;
+        font-size: 9px;
+        color: #000000;
+        display: block;
+    }
+
+    .titlebar-quickbuttons-button:hover {
+        background: var(--secondary-color);
+        border: 1px solid var(--secondary-color);
+    }
+
+    .titlebar-quickbuttons-button:hover span {
+        color: #000;
+    }
+
+.titlebar-controls {
+    width: auto;
+    height: 100%;
+    background: none;
+    float: right;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.titlebar-controls-button {
+    width: 9px;
+    height: 9px;
+    content: "";
+    position: relative;
+    padding: 8px;
+    float: right;
+    background: none;
+}
+
+    .titlebar-controls-button:before, .titlebar-controls-button:after {
+        content: "";
+        position: absolute;
+        background: #000;
+    }
+
+    .titlebar-controls-button.button-close:before, .titlebar-controls-button.button-close:after {
+        width: 70%;
+        height: 1px;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+    }
+
+    .titlebar-controls-button.button-close:before {
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .titlebar-controls-button.button-close:after {
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+    .titlebar-controls-button.button-toggleMaximise:before {
+        width: 40%;
+        height: 40%;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        background: none;
+        border: 1px solid #000;
+    }
+
+    .titlebar-controls-button.button-minimize:before {
+        width: 40%;
+        height: 1px;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+    }
+
+    .titlebar-controls-button:hover {
+        background: #efefef;
+    }
+
+    .titlebar-controls-button.button-close:hover {
+        background: #ff7878;
+    }
+
+        .titlebar-controls-button.button-close:hover:before, .titlebar-controls-button.button-close:hover:after {
+            background: #000;
+        }
