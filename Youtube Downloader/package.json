@@ -9,14 +9,17 @@
   },
   "scripts": {
     "install": "npm install colors electron electron-is-dev express ffmpeg node-notifier socket.io socket.io-client ytdl-core",
+    "build": "electron-packager . Youtube-Converter --overwrite --asar=true --platform=win32 --arch=ia32 --icon=view/data/icons/yt.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Youtube Converter\"",
     "start": "electron ."
   },
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "colors": "^1.4.0",
     "electron": "^14.0.1",
     "electron-is-dev": "^2.0.0",
     "express": "^4.17.1",
     "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
     "install": "^0.13.0",
     "node-notifier": "^10.0.0",
     "npm": "^7.24.0",

@@ -1,21 +1,12 @@
-const io = require("socket.io-client");
+const path = require('path'),
+    fs = require('fs'),
+    ytdl = require('ytdl-core');
 
-export const socket = io("http://localhost:8000");
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffmpeg = require('fluent-ffmpeg');
+ffmpeg.setFfmpegPath(ffmpegPath);
 
-// Handle incoming socket requests
-socket.on("app_response:errorcode:path_not_exist", function (data) {
-    if (typeof confirm == "function") {
-        confirm(data);
-    }
-});
-
-
-/**
- * Generates an unique ID.
- * @param {number | undefined} len Length of the ID, default length is 12 when no parameter has been given.
- */
-export function generateUniqueID(len) {
-
+function guid(len) {
     len = typeof len == "number" ? len : 12;
 
     let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
@@ -127,3 +118,85 @@ export function generateUniqueID(len) {
         }
     }
 }
+
+/**
+ * Downloads queue.
+ * @param {string} p
+ * @param {Array} queue
+ * @param {Socket} socket
+ */
+function downloadQueue(p, queue, socket) {
+
+    if (queue.length == 0) return;
+
+    queue.forEach(async function (item) {
+
+        let output = item.fileName == null ? `video-${guid(18).id}` : item.fileName,
+            size = 0,
+            contentLength = 0;
+
+        let stream = await ytdl(item.url, {
+            quality: "highestaudio"
+        });
+
+        stream.on("response", function (res) {
+            size = res.headers["content-length"] !== undefined ? (res.headers["content-length"] / 1024) : 0;
+            contentLength = res.headers["content-length"] !== undefined ? (res.headers["content-length"]) : 0;
+
+            socket.emit("downloader:onprogress", {
+                percentage: 0,
+                field: item.field,
+                size: contentLength
+            });
+        });
+
+        stream.on("end", function () {
+            stream.destroy();
+        });
+
+
+        let f = ffmpeg(stream);
+
+        f.audioBitrate(128);
+        f.save(path.join(p, output + ".mp3"));
+
+        f.on("progress", function (progress) {
+
+            const percentage = Math.round(100 / size * progress.targetSize);
+
+            console.log(percentage);
+
+            socket.emit("downloader:onprogress", {
+                percentage: percentage < 100 ? percentage : 100,
+                field: item.field,
+                size: contentLength
+            });
+
+        });
+
+        f.on("end", function () {
+            console.log("Video succesfully downloaded");
+
+            stream.destroy();
+
+            socket.emit("downloader:onfinish", {
+                percentage: 100,
+                field: item.field,
+                size: contentLength
+            });
+
+            f.removeAllListeners("progress");
+            f.removeAllListeners("end");
+
+
+            stream.removeAllListeners("response");
+            f = null;
+            stream = null;
+        });
+    });
+
+}
+
+module.exports = {
+    downloadQueue: downloadQueue
+};

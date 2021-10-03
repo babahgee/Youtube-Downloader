@@ -32,6 +32,8 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="serverside\appdata.js" />
+    <Content Include="serverside\convertvideos.js" />
+    <Content Include="serverside\handleio.js" />
     <Content Include="view\data\fonts\atures.ttf" />
     <Content Include="view\data\fonts\black.ttf" />
     <Content Include="view\data\fonts\Chopsic-K6Dp.ttf" />
@@ -88,6 +90,7 @@
     <Content Include="view\data\fonts\scary_halloween.zip" />
     <Content Include="view\data\fonts\VeganAbattoir.otf" />
     <Content Include="view\data\fonts\WhitneyMedium.woff" />
+    <Content Include="view\data\icons\yt.ico" />
     <Content Include="view\data\images\wallpaper_abstract_white.jpg" />
     <Content Include="view\index.html">
       <SubType>Code</SubType>
@@ -108,6 +111,7 @@
     <Folder Include="view\data\" />
     <Folder Include="view\data\fonts\" />
     <Folder Include="view\data\images\" />
+    <Folder Include="view\data\icons\" />
     <Folder Include="view\scripts\" />
     <Folder Include="view\scripts\static\" />
     <Folder Include="view\styles\" />
