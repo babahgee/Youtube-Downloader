@@ -3,7 +3,8 @@ import "./static/static.titlebar.js";
 
 const addQueueItemButton = document.querySelector(".button-add-item-to-queue"),
     mainQueue = document.querySelector(".downloader-queue-items"),
-    convertButton = document.querySelector(".button-convert-videos");
+    convertButton = document.querySelector(".button-convert-videos"),
+    outputPathField = document.querySelector(".downloader-output-path");
 
 const fields = {};
 
@@ -164,6 +165,24 @@ window.addEventListener("load", function () {
         if (path.innerText == "") return; 
 
         socket.emit("app:convert_queue", {path: path.innerText, fields: objs});
+
+    });
+
+    outputPathField.addEventListener("click", function (event) {
+
+        socket.emit("app:select_path", {
+            time: Date.now()
+        });
+
+    });
+
+    socket.on("app_response:select_path", function (event) {
+
+        const canceled = event.data.canceled;
+
+        if (canceled) return;
+
+        outputPathField.innerText = event.data.filePaths[0];
 
     });
 

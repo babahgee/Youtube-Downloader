@@ -1,6 +1,11 @@
 const fs = require("fs"),
-    path = require("path");
+    path = require("path"),
+    electron = require("electron");
+
 const { downloadQueue } = require("./convertvideos");
+
+const { dialog } = electron;
+
 
 function handle(socket) {
 
@@ -19,6 +24,23 @@ function handle(socket) {
 
     });
 
+    socket.on("app:select_path", function (event) {
+        const results = dialog.showOpenDialog({
+            properties: ["openDirectory"]
+        }).then(function (data) {
+
+            console.log(data);
+
+            socket.emit("app_response:select_path", {
+                data: data,
+                timestamp: Date.now(),
+                type: "dialog"
+            });
+
+        }).catch(function (err) {
+
+        });
+    });
 }
 
 module.exports = {

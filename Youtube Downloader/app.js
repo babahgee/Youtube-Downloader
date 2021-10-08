@@ -9,9 +9,15 @@ const path = require("path"),
 
 const { handle } = require("./serverside/handleio");
 
+const appData = require("./serverside/appdata");
+
+const parsedAppData = appData.initialize();
+
 process.env.SOCKET_PORT = 8000;
 
 const io = socketio(process.env.SOCKET_PORT);
+
+const extensionSocket = socketio(parsedAppData.extension.socketPort);
 
 // Get required objects from 'electron' object.
 const { app, BrowserWindow, ipcMain } = electron;
